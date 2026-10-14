@@ -16,7 +16,18 @@ export const categories = ['Projects'] as const;
 export type Category = (typeof categories)[number];
 export const projects = [
   { id: 'cryptopulse', title: 'CryptoPulse', category: 'Time Series', label: 'MACHINE LEARNING · CRYPTOCURRENCY', date: 'September 2026', description: 'Predicting cryptocurrency price direction from 1-minute market data for BTC, ETH, SOL, BNB, and XRP. Engineered technical features and trained Logistic Regression models for a 30-minute forecasting horizon, evaluated with rolling and walk-forward validation.', stack: ['Python', 'Scikit-learn', 'FastAPI', 'React'], visual: 'crypto', github: 'https://github.com/Sarvan-0/CryptoPulse', demo: '' },
-  { id: 'student-performance', title: 'Student Performance Predictor', category: 'Regression', label: 'MACHINE LEARNING · EDUCATION', date: 'August 2026', description: 'Predicting student exam performance using academic and personal factors. Built a machine learning workflow with data preprocessing, model training, and predictive performance evaluation using Scikit-learn.', stack: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib'], visual: 'student', github: 'https://github.com/Sarvan-0/student-performance-predictor', demo: '' },
+  {
+  id: 'beverage-hub',
+  title: 'Beverage Hub',
+  category: 'Full Stack Development',
+  label: 'FULL STACK · WEB APPLICATION',
+  date: 'October 2026',
+  description: 'A web application for exploring beverage-related products and information. Built as a full-stack project.',
+  stack: ['JavaScript', 'React', 'Node.js'],
+  visual: 'beverage',
+  github: 'https://github.com/Sarvan-0/beverage-hub',
+  demo: ''
+},
 ];
 export function filterProjects(_category: Category) { return projects; }
 export const skillGroups = [

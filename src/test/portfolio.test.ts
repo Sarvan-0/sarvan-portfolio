@@ -14,7 +14,7 @@ describe('portfolio projects', () => {
   it('preserves project links and details', () => {
     expect(projects[0]?.title).toBe('CryptoPulse');
     expect(projects[0]?.github).toBe('https://github.com/Sarvan-0/CryptoPulse');
-    expect(projects[1]?.title).toBe('Student Performance Predictor');
-    expect(projects[1]?.github).toBe('https://github.com/Sarvan-0/student-performance-predictor');
+    expect(projects[1]?.title).toBe('Beverage Hub');
+    expect(projects[1]?.github).toBe('https://github.com/Sarvan-0/beverage-hub');
   });
 });

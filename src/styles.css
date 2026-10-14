@@ -68,7 +68,7 @@
 .hero-actions > :first-child { height: 43px; font-size: 11px; padding-inline: 20px; box-shadow: 0 3px 25px color-mix(in oklch, var(--primary) 12%, transparent); }
 .hero-resume { height: 43px; font-size: 11px; background: color-mix(in oklch, var(--background) 75%, transparent); padding-inline: 17px; }
 .hero-github { padding: 0; width: 35px; color: var(--muted-foreground); }
-.hero-footnote { display: flex; justify-content: space-between; margin-top: 41px; border-top: 1px solid var(--border); padding-top: 21px; color: var(--muted-foreground); font-size: 9px; }
+.hero-footnote { display: flex; justify-content: space-between; margin-top: 41px; padding-top: 21px; color: var(--muted-foreground); font-size: 9px; }
 .hero-footnote > span, .hero-footnote > a { display: inline-flex; align-items: center; gap: 10px; }
 .hero-footnote > a { font-family: var(--font-mono); font-size: 8px; letter-spacing: 1px; }
 .tech-strip { border-block: 1px solid var(--border); background: var(--section-surface); }

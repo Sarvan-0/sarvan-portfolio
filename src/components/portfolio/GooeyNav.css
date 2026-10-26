@@ -42,9 +42,7 @@
 }
 
 .gooey-nav__canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: none !important;
   pointer-events: none;
 }
 
@@ -69,12 +67,7 @@
 }
 
 .gooey-nav__list--active {
-  position: absolute;
-  inset: 0;
-  color: var(--gn-active-ink);
-  visibility: hidden;
-  clip-path: inset(100%);
-  pointer-events: none;
+  display: none !important;
 }
 
 .gooey-nav__item {
@@ -95,7 +88,7 @@
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -104,7 +97,9 @@
 }
 
 .gooey-nav__item[data-active] .gooey-nav__link {
-  color: var(--gn-ink);
+  color: var(--gn-active-ink);
+  background: var(--gn-pill);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
 }
 
 .gooey-nav__link:focus-visible {

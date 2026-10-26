@@ -265,6 +265,14 @@ const GooeyNav = ({
     const fallback = fallbackRef.current;
     if (!stage || !canvas || !list || !overlay || !fallback) return;
 
+    // Use the lightweight CSS indicator for this site. The original WebGL metaball
+    // renderer repeatedly traces every row of the nav and can stutter on smaller GPUs.
+    // A CSS active pill stays aligned with the selected item and avoids per-frame work.
+    canvas.style.display = 'none';
+    overlay.style.display = 'none';
+    fallback.style.display = 'none';
+    return () => {};
+
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: false });
     const pipeline = gl ? build(gl) : null;

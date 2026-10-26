@@ -41,6 +41,15 @@
 .container { width: min(1180px, calc(100% - 112px)); margin-inline: auto; }
 .site-header { position: sticky; top: 0; z-index: 40; height: 82px; background: color-mix(in oklch, var(--background) 87%, transparent); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
 .nav-shell { width: min(1320px, calc(100% - 80px)); height: 100%; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 28px; }
+.site-pill-nav { flex: 1; justify-content: flex-end; }
+.site-pill-nav .pill-nav__track { height: 100%; }
+.site-pill-nav .pill-nav__list { gap: 18px; }
+.site-pill-nav .pill-nav__item { padding-inline: 10px; font-size: 14px; font-weight: 400; }
+.site-pill-nav .pill-nav__dot { background: #a99bff; }
+.site-pill-nav .pill-nav__slot[data-lit] .pill-nav__item,
+.site-pill-nav .pill-nav__item[aria-current] { color: var(--foreground); }
+.site-pill-nav .pill-nav__measure { display: none; }
+
 .logo { display: inline-flex; gap: 16px; align-items: center; white-space: nowrap; }
 .logo-mark { font-size: 24px; font-weight: 800; }
 .logo-divider { width: 1px; height: 21px; background: var(--border); }
@@ -282,3 +291,139 @@
 .article-reading-note p { color:var(--muted-foreground); font-size:11px; line-height:1.8; margin:0; }
 @media (max-width:900px) { .blog-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:600px) { .blog-grid { grid-template-columns:1fr; } .blog-intro-row { align-items:flex-start; flex-direction:column; gap:11px; } .blog-end-note { align-items:flex-start; flex-wrap:wrap; } .blog-end-note p { flex-basis:calc(100% - 55px); } .blog-end-note a { margin-left:34px; } .article-reading-note { flex-direction:column; gap:7px; } }
+
+
+/* DepthText is used only for the name on the home page. */
+.hero-depth-name { margin-top: 25px; margin-bottom: 4px; min-height: clamp(3.5rem, 7vw, 6.2rem); overflow: visible; }
+.hero-depth-name .depth-text { color: var(--foreground); }
+@media (max-width: 760px) { .hero-depth-name { margin-top: 20px; min-height: 4rem; max-width: 100%; } .hero-depth-name .depth-text__layer, .hero-depth-name .depth-text__face { letter-spacing: -0.07em; } }
+
+/* Scroll-driven opening image on the homepage. */
+.hero-scroll-expand {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  isolation: isolate;
+  background: var(--hero-black);
+}
+.hero-scroll-expand .scroll-expand__stage { background: var(--hero-black); }
+.hero-scroll-expand .scroll-expand__overlay { z-index: 2; }
+.hero-scroll-expand .hero-content { width: min(1180px, calc(100% - 112px)); padding-top: 40px; padding-bottom: 32px; }
+.hero-scroll-expand .hero-footnote { margin-top: 28px; }
+@media (max-width: 760px) {
+  .hero-scroll-expand .hero-content { width: calc(100% - 40px); padding-top: 24px; padding-bottom: 20px; }
+  .hero-scroll-expand .hero-footnote { margin-top: 20px; }
+}
+
+
+/* Improve readability over bright hero photography. */
+.hero-scroll-expand .scroll-expand__overlay {
+  isolation: isolate;
+  overflow: hidden;
+}
+.hero-scroll-expand .scroll-expand__overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(5, 8, 16, 0.88) 0%, rgba(5, 8, 16, 0.72) 31%, rgba(5, 8, 16, 0.38) 55%, rgba(5, 8, 16, 0.08) 78%, transparent 100%),
+              linear-gradient(0deg, rgba(5, 8, 16, 0.42), transparent 62%);
+}
+.hero-scroll-expand .hero-content {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.38);
+}
+.hero-scroll-expand .hero-content > p {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 470px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75);
+}
+.hero-scroll-expand .hero-eyebrow {
+  color: rgba(255, 255, 255, 0.82);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+.hero-scroll-expand .hero-footnote {
+  color: rgba(255, 255, 255, 0.76);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.hero-scroll-expand .availability {
+  background: rgba(5, 15, 18, 0.72);
+  border-color: rgba(72, 220, 164, 0.45);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.22);
+}
+.hero-scroll-expand .hero-actions > a,
+.hero-scroll-expand .hero-actions button {
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.28);
+}
+@media (max-width: 760px) {
+  .hero-scroll-expand .scroll-expand__overlay::before {
+    background: linear-gradient(90deg, rgba(5, 8, 16, 0.78), rgba(5, 8, 16, 0.48) 72%, rgba(5, 8, 16, 0.22)),
+                linear-gradient(0deg, rgba(5, 8, 16, 0.58), transparent 80%);
+  }
+  .hero-scroll-expand .hero-content > p { max-width: 100%; }
+}
+
+
+/* Contact headline: animated EchoText with a restrained violet trail. */
+.contact-title-block { max-width: 100%; }
+.contact-echo-heading { max-width: 100%; overflow: visible; }
+.contact-echo-heading .echo-text {
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.16;
+  letter-spacing: -0.045em;
+}
+.contact-echo-heading .echo-text__echo {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .contact-echo-heading { margin-top: 22px; }
+  .contact-echo-heading .echo-text { font-size: clamp(1.7rem, 7vw, 2.3rem) !important; }
+}
+
+
+/* Purple specular edge treatment, applied globally to shared and native buttons. */
+.specular-button,
+button,
+a[role="button"] {
+  position: relative;
+  isolation: isolate;
+  --specular-radius: inherit;
+}
+.specular-button::after,
+button::after,
+a[role="button"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--specular-radius, inherit);
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 0%, rgba(169,155,255,.18) 24%, rgba(214,205,255,.9) 48%, rgba(139,92,246,.68) 58%, transparent 78%);
+  background-size: 240% 100%;
+  opacity: .72;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: specular-edge-sweep 4.5s ease-in-out infinite;
+}
+.specular-button:hover::after,
+button:hover::after,
+a[role="button"]:hover::after { opacity: 1; }
+.specular-button:focus-visible,
+button:focus-visible,
+a[role="button"]:focus-visible { outline-offset: 4px; }
+@keyframes specular-edge-sweep {
+  0%, 15% { background-position: 100% 0; }
+  65%, 100% { background-position: 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .specular-button::after, button::after, a[role="button"]::after { animation: none; opacity: .65; }
+}
+
+@media (max-width: 900px) {
+  .site-pill-nav { display: none; }
+}

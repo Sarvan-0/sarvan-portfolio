@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Check, Copy, Download, X, FileText, Github, Mail, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import EchoText from '@/components/portfolio/EchoText';
 import { emailHref, profile } from '@/lib/portfolio';
 export function Logo() { return <a href="/#home" className="logo" aria-label={`${profile.name} home`}><span className="logo-name">{profile.name}</span></a>; }
-export function SectionHeading({ number, label, title, description }: { number: string; label: string; title: string; description?: string }) { return <div className="section-heading"><div className="eyebrow"><span>{number} /</span> {label}</div><h2>{title}</h2>{description && <p>{description}</p>}</div>; }
+export function SectionHeading({ number, label, title, description, echoTitle = false }: { number: string; label: string; title: string; description?: string; echoTitle?: boolean }) { return <div className="section-heading"><div className="eyebrow"><span>{number} /</span> {label}</div><h2>{echoTitle ? <EchoText text={title} className="section-heading-echo" echoes={8} lag={0.22} offset={10} direction="right" fade={0.68} blur={1.6} tint="#8b5cf6" echoStyle="solid" echoScale={1} mode="both" trail="auto" clickBurst cursorRadius={260} duration={850} ease="ease-out" fontSize="inherit" fontWeight="inherit" color="var(--foreground)" /> : title}</h2>{description && <p>{description}</p>}</div>; }
 export function CopyEmail({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<number | undefined>(undefined);

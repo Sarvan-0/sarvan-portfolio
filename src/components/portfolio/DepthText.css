@@ -1,0 +1,63 @@
+.depth-text {
+  display: inline-block;
+  max-width: 100%;
+  perspective: var(--depth-perspective, 900px);
+  perspective-origin: 50% 48%;
+  isolation: isolate;
+  vertical-align: middle;
+}
+
+.depth-text__stage {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.depth-text__layer,
+.depth-text__face {
+  grid-area: 1 / 1;
+  display: inline-block;
+  font-size: var(--depth-font-size, clamp(3rem, 12vw, 7rem));
+  font-weight: var(--depth-font-weight, 900);
+  line-height: 0.92;
+  letter-spacing: -0.065em;
+  white-space: nowrap;
+  user-select: none;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  font-kerning: normal;
+  text-rendering: geometricPrecision;
+}
+
+.depth-text__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.depth-text__layer--back {
+  text-shadow: var(--depth-shadow, none);
+}
+
+.depth-text--outline .depth-text__layer {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: max(1px, 0.012em) currentColor;
+}
+
+.depth-text__face {
+  position: relative;
+  z-index: 1;
+  color: var(--depth-face-color, currentColor);
+  text-shadow: 0 0.035em 0.07em rgb(0 0 0 / 28%);
+  transform: translateZ(0.6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-text__stage {
+    will-change: auto;
+  }
+}

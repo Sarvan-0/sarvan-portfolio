@@ -18,7 +18,7 @@ function BlogPage() {
         <SectionHeading
           number="05"
           label="FIELD NOTES"
-          title="Ideas worth exploring."
+          title="Ideas worth exploring." echoTitle
         />
         <div className="blog-grid">
           {articles.map((article, index) => {
